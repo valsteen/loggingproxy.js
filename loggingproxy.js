@@ -22,6 +22,9 @@ var server = net.createServer(function (c) {
                 remote.on("close", function () {
                         c.end();
                 });
+        }).on('error', function (e) {
+            console.log("Got error: " + e.message);
+            c.end();
         });
 
         c.on("data", function (data) {
